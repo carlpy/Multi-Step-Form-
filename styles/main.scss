@@ -1,0 +1,516 @@
+@mixin formUI() {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 100;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    background-color: #fff;
+
+    h1 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 0 0 .7rem 0;
+    }
+
+    p {
+        color: $Cool-gray;
+        margin: 0 0 1.2rem 0;
+        line-height: 1.5;
+    }
+
+    @media only screen and (min-width: $lg) { h1 { font-size: 2rem;} }
+}
+
+// breakpoints
+
+$md: 768px;
+$lg: 1024px;
+
+// variables--- colors
+$Marine-blue: #02295a;
+$Purplish-blue: hsl(243, 100%, 62%);
+$Pastel-blue: #adbeff;
+$Light-blue: #bfe2fd;
+$Strawberry-red: hsl(354, 84%, 57%);
+
+$Cool-gray: #9699ab;
+$Light-gray: #d6d9e6;
+$Magnolia: #f0f6ff;
+$Alabaster: #fafbff;
+
+$blueish: hsl(206, 94%, 87%);
+
+* {
+    font-family: 'Ubuntu';
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    background-color: #EEF5FF;
+    overflow-x: hidden;
+}
+
+.form__container {
+    margin: 8rem auto;
+    width: 95%;
+    max-width: 950px;
+    display: flex;
+    border-radius: 10px;
+
+    .sidebar { 
+        background: url('../assets/images/bg-sidebar-mobile.svg') no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 11rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+    
+        li {
+            .steps {
+                border: 1px solid $Light-blue;
+                border-radius: 999px;
+                width: 37px;
+                height: 37px;
+                margin: 0 1.5rem 0 0;
+                font-size: 1rem;
+                color: #fff;
+                font-weight: 700;
+                background-color: transparent;
+            }
+        
+            .steps.active { 
+                background-color: $Light-blue; 
+                color: $Marine-blue;
+            }
+    
+            .step__text {
+                display: none;
+                text-transform: uppercase;
+
+                span { font-size: .85rem;}
+                p {font-weight: 700;}
+            }
+        }
+    }    
+    
+    @media only screen and (min-width: $lg) { // display block in larger screensvv
+
+        & {
+            padding: 1rem;     
+            background-color: #fff;
+            position: relative;
+        }
+
+        .sidebar { 
+            background: url('../assets/images/bg-sidebar-desktop.svg') no-repeat; 
+            background-position: center;
+            position: static;
+            display: block;
+            height: 36rem;
+            max-width: 275px;
+            padding: 2rem;
+
+            li {
+                display: flex;
+                margin: 0 0 1.5rem 0;
+
+                .steps {margin: 0 1rem 0 0;}
+
+                .step__text {
+                    display: block;
+
+                    p {color: #fff;}
+                    span { color: $Cool-gray; }
+                }
+            }
+        }
+
+        .steps__text { display: block; }
+    }
+}
+
+#main-form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    #steps__container {
+        width: 100%;
+    }
+
+    .btn__container {
+        position: absolute;
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        padding: 0 2rem;
+        bottom: -5rem;
+        z-index: 200;
+        
+        & > * {font-size: 1rem;}
+    }
+
+    .next {
+        background-color: $Marine-blue;
+        color: #fff;
+        border: none;
+        padding: 1rem 1.5rem;
+        border-radius: 7px;
+        
+        &:active{outline: 2px solid $Purplish-blue;}
+    }
+
+    .back { 
+        visibility: hidden; // until u get to step 2
+        background-color: transparent;
+        color: $Cool-gray;
+        border: none;
+
+        &:hover { color: $Marine-blue;}
+        &.active { visibility: visible;}
+    }
+
+    .confirm { background-color: $Purplish-blue;}
+
+    @media only screen and (min-width: $lg) {
+
+        & { flex: .85; margin: 0 auto; }
+        
+        .btn__container { 
+            bottom: 1rem; right: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.form__step-1__container { 
+    @include formUI;
+    display: none; // activate every form when the step num get's in
+
+    #step-1__form { 
+        div { 
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            label { margin: 0 0 .5rem; font-size: 1rem;}
+
+            input { 
+                margin: 0 0 1rem 0;  
+                padding: .7rem .5rem;
+                border: 1px solid $Light-gray;
+                border-radius: 7px;
+                font-weight: 700;
+
+                &::placeholder {font-size: 1rem;}
+            }
+
+            input[type=text]:focus { outline:1px solid $Purplish-blue; }
+            input::placeholder { color: $Cool-gray; font-weight: 700; padding: 0 .3rem;}
+
+            .error {
+                display: none;
+                position: absolute;
+                top: 0; right: 0;
+                color: $Strawberry-red;
+                font-size: .9rem;
+                font-weight: 700;
+            }
+
+            .active-error { display: block; }
+
+
+            .error.active-error + input { border: 1px solid $Strawberry-red; }
+        }
+    }
+}
+
+.form__step-2__container { 
+    @include formUI;
+    display: none;
+    // square up the btns and find out how to make the switch
+
+    #step-2__plan-options__container {
+        
+        .plan-options__list { 
+            .plan {
+                display: flex;
+                align-items: center;
+                border: 1px solid $Light-gray;
+                padding: 1rem;
+                border-radius: 10px;
+                margin: 1rem 0 0.5rem 0;
+                font-weight: 700;
+                
+                img { 
+                    margin: 0 1rem 0 0;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+
+                
+                .plan__container {
+                    p { color: $Marine-blue; margin: 0 0 0.3rem  0;}
+                    span { color: $Cool-gray; font-size: .9rem;}
+                    .month-discount { 
+                        margin: .5rem 0 0 0;                        
+                        color: $Marine-blue;
+                        font-size: .8rem;
+                        font-weight: 700;
+                        display: none;
+
+                        &.active-outcome { display: block;}
+                    }
+
+                    .cost-container { color: $Cool-gray; font-size: .9rem; }
+
+                    .yearly-cost { display: none; }
+                    .monthly-cost { display: block; }
+                }
+                
+                &.active { 
+                    border: 1px solid $Purplish-blue;
+                    background-color: #F8F9FE;
+                }
+
+                &:hover {
+                    border: 1px solid $Purplish-blue;
+                    background-color: #F8F9FE;
+                }
+            }
+        }
+
+        .sub__method {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            background-color: #F8F9FE;
+            .switch {
+                position: relative;
+                display: block;
+                width: 40px;
+                height: 20px;
+            }
+
+            .slider { 
+                position: absolute;
+                border-radius: 999px;
+                cursor: pointer;
+                top: 0; left: 0; right: 0; bottom: 0; 
+                background-color: #333;
+                border: 3px solid #333;
+                box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+                transition: .5s;
+            }
+
+            .slider::before {
+                content: '';
+                position: absolute;
+                background-color: #fff;
+                width: 30%;
+                height: 73%;
+                border-radius: 999px;
+                transform: translate(5%, 15%);
+                transition: .5s;
+            }
+
+            input { display: none;}
+            input:checked + .slider::before { transform: translate(210%, 15%);}
+
+            .monthly { font-weight: 700;}
+        }
+
+        @media only screen and (min-width: $lg) {
+            .plan-options__list {
+                display: flex;
+                justify-content: space-between;
+
+                .plan {
+
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    
+                    
+                    width: 140px;
+                    height: 180px;
+                }
+            }
+        }
+    }
+}
+
+.form__step-3__container { 
+    @include formUI;
+    display: none;
+
+    #add-ons__list {
+        margin: 1rem 0 0 0;
+
+        input:checked + label {border: 1px solid $Purplish-blue;}
+        input:checked + label .styled-checkbox { border: 1px solid $Purplish-blue; }
+        input:checked + label .styled-checkbox::before { background: $Purplish-blue url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png') center/60% no-repeat; }
+
+        label {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid $Cool-gray;
+            border-radius: 9px;
+            margin: 0 0 1rem 0;
+            padding: 1.5rem;
+
+            
+            .styled-checkbox {
+                width: 1.3rem;
+                height: 1.3rem;
+                border: 1px solid $Cool-gray;
+                border-radius: 5px;
+                position: relative;
+                
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            
+            .right__container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex: .9;
+
+                .add-ons__text {
+                    line-height: .5;
+                    h3 { margin: 0 0 0.5rem 0; font-size: .95rem;}
+
+                    p { font-size: 15px; margin: 0 0 .5rem 0;}
+                    span { font-size: 13px}
+                }
+                
+                p {
+                    font-size: 14px; color: $Purplish-blue;
+                    .add-on-cost { font-size: 14px; color: $Purplish-blue;}
+
+                    .yearly-add { display: none; }
+                }
+            }
+        }
+
+        input:checked + label { border: 1px solid $Purplish-blue; background-color: #F8F9FE; }
+        input { display: none;}
+    }
+}
+
+.form__step-4__container {
+    @include formUI;
+    display: none;
+
+    p, span { margin: 0; font-size: .9rem; }
+
+    .total-amount__container {
+        background-color: #F8F9FE;
+        padding: 1rem;
+        margin: 1.5rem 0 0 0;
+
+        .total-amount__title { 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 1.5rem 0;
+
+            .plan-cost {
+                color: $Marine-blue; 
+                margin: 0;
+                font-weight: 700;
+            }
+
+            p {font-size: 1.1rem;}
+        }
+
+        .plan-description {
+            p {font-weight: 700; 
+                margin: 0 0 0 0; 
+                color: $Marine-blue}
+            
+            button { 
+                background-color: transparent; 
+                border: none; 
+                text-decoration: underline;
+                color: $Cool-gray;
+            }
+        }
+
+        .line { 
+            width: 100%; 
+            height: 1px; 
+            background-color: $Light-gray; 
+            margin: 0 0 1rem 0;
+        }
+    }
+
+    .total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+        
+        span { 
+            color: $Purplish-blue;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .total-year { 
+            display: none;
+        }
+    }
+
+    .extra-plans {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.25rem 0 0 0;
+
+        p { color: $Cool-gray;}
+
+        span { 
+            color: #02295aab; 
+            font-weight: 700;
+        }
+    }
+}
+
+.form__step-5__container {
+    @include formUI;
+    display: none;
+
+    .thanks__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        h1 { margin: 1.5rem 0;}
+    }
+}
+
+.active-step { display: block; }
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

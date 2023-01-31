@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body> 
+
+  <div class="form__container">
+    <ul class="sidebar"> <!-- all devices -->
+      <li>
+        <button class="steps">1</button>
+        <div class="step__text">
+          <span>Step 1</span>
+          <p>Your info</p>
+        </div>
+      </li>
+
+      <li> <!-- 2 -->
+        <button class="steps">2</button>
+        <div class="step__text">
+          <span>Step 2</span>
+          <p>Select plan</p>
+        </div>
+      </li>
+
+      <li> <!-- 3 -->
+        <button class="steps">3</button>
+        <div class="step__text">
+          <span>Step 3</span>
+          <p>Add-ons</p>
+        </div>
+      </li>
+
+      <li> <!-- 4 -->
+        <button class="steps">4</button>
+        <div class="step__text">
+          <span>Step 4</span>
+          <p>Summary</p>
+        </div>
+      </li>
+    </ul>
+
+    <form id="main-form">
+      <div id="steps__container">
+        <div class="form__step-1__container active-step" data-form-id="1"> 
+          <h1>Personal info</h1>
+          <p>Please provide your name, email address, and phone number.</p>
+  
+          <div id="step-1__form">
+            <div>
+              <label for="name">Name</label>
+              <div class="error"></div>
+              <input type="text" id="name" name="name" placeholder="e.g. Stephen King" required>
+            </div>
+            <div>
+              <label for="email">Email Address</label>
+              <div class="error"></div>
+              <input type="text" id="email" name="email" placeholder="e.g. stephenking@lorem.com" required>
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <div class="error"></div>
+              <input type="text" id="phone" name="phone" placeholder="e.g. +1 234 567 890" required>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form__step-2__container" data-form-id="2"> <!-- Plan -->
+          <h1>Select your plan</h1>
+          <p>You have the option of monthly or yearly billing.</p>
+      
+          <div id="step-2__plan-options__container">
+            <ul class="plan-options__list">
+
+              <li class="plan">
+                <img src="./assets/images/icon-arcade.svg">
+                
+                <div class="plan__container">
+                  <p class="plan-names">Arcade</p>
+
+                  <p class="cost-container">$<span class="cost monthly-cost">9/mo</span></p>
+                  <p class="cost-container">$<span class="cost yearly-cost">90/yr</span></p>
+
+                  <span class="month-discount">2 months free</span>
+                </div>
+              </li>
+      
+              <li class="plan">
+                <img src="./assets/images/icon-advanced.svg">
+                
+                <div class="plan__container">
+                  <p class="plan-names">Advanced</p>
+
+                  <p class="cost-container">$<span class="cost monthly-cost">12/mo</span></p>
+                  <p class="cost-container">$<span class="cost yearly-cost">120/yr</span></p>
+
+                  <span class="month-discount">2 months free</span>
+                </div>
+              </li>
+      
+              <li class="plan">
+                <img src="./assets/images/icon-pro.svg">
+                
+                <div class="plan__container">
+                  <p class="plan-names">Pro</p>
+              
+                  <p class="cost-container">$<span class="cost monthly-cost">15/mo</span></p>
+                  <p class="cost-container">$<span class="cost yearly-cost">150/yr</span></p>
+        
+                  <span class="month-discount">2 months free</span>
+                </div>
+              </li>
+            </ul>
+            
+            <div class="sub__method">
+              <span class="monthly">Monthly</span>
+              
+              <label class="switch">
+                <input type="checkbox" class="switch-inp">
+                <span class="slider"></span>
+              </label>
+      
+              <span class="yearly">Yearly</span>
+            </div>
+            
+            
+          </div>
+        </div>
+        
+        <div class="form__step-3__container" data-form-id="3"> <!-- Add-ons -->
+          <h1>Pick add-ons</h1>
+          <p>Add-ons help enhance your gaming experience.</p>
+        
+          <div id="add-ons__list">
+            <div>
+              <input type="checkbox" id="online">
+        
+              <label for="online" data-label-id="online" class="add-on-label">
+                <span class="styled-checkbox"></span>
+                
+                <div class="right__container">
+                  <div class="add-ons__text">
+                    <h3 class="title">Online service</h3>
+                    <span>Access to multiplayer games</span>
+                  </div>
+                  
+                  <p>+$<span class="monthly-add add-on-cost">1/mo</span></p>
+                  <p>+$<span class="yearly-add add-on-cost">10/yr</span></p>
+                </div>
+              </label>
+            </div>
+            
+            <div>
+              <input type="checkbox" id="storage">
+        
+              <label for="storage" data-label-id="storage" class="add-on-label">
+                <span class="styled-checkbox"></span>
+        
+                <div class="right__container">
+                  <div class="add-ons__text">
+                    <h3 class="title">Larger storage</h3>
+                    <span>Extra 1TB of cloud save</span>
+                  </div>
+                  <p>+$<span class="monthly-add add-on-cost">2/mo</span></p>
+                  <p>+$<span class="yearly-add add-on-cost">20/yr</span></p>
+                </div>
+              </label>
+            </div>
+        
+            <div>
+              <input type="checkbox" id="custom">
+        
+              <label for="custom" data-label-id="custom" class="add-on-label">
+                <span class="styled-checkbox"></span>
+                
+                <div class="right__container">
+                  <div class="add-ons__text">
+                    <h3 class="title">Customizable Profile</h3>
+                    <span>Custom theme on your profile</span>
+                  </div>
+                  <p>+$<span class="monthly-add add-on-cost">2/mo</span></p>
+                  <p>+$<span class="yearly-add add-on-cost">20/yr</span></p>
+                </div>
+              </label>
+            </div>
+        
+          </div>
+        
+        </div>
+      
+        <div class="form__step-4__container" data-form-id="4"> <!-- Finish up -->
+          <h1>Finishing up</h1>
+          <p>Double-check everything looks OK before confirming.</p>
+      
+          <div class="total-amount__container"> 
+            <div class="total-amount__title">
+              <div class="plan-description">
+
+                <p class="plan-name"></p>
+                <button type="button" class="change-plan-btn">Change</button>
+              </div>
+
+              <p class="plan-cost"></p> <!-- this will change according to plan cost -->
+
+            </div>
+
+            <div class="line"></div>
+            <div class="subtotal___container"></div>
+          </div>
+
+          <div class="total">
+            
+            <p class="total-month">Total (Month)</p>
+            <p class="total-year">Total (Year)</p>
+
+            <span class="total-product">$100/mo</span>
+          </div>
+        </div>
+        
+        <div class="form__step-5__container" data-form-id="5">
+          <div class="thanks__container">
+            <img src="./assets/images/icon-thank-you.svg" alt="">
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hope you have fun 
+              using our platform. If you ever need support, please feel free 
+              to email us at support@loremgaming.com.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn__container">
+        <button type="button" class="change-btn back">Back Step</button>
+        <button type="button" class="change-btn next">Next Step</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://www.frontendmentor.io/profile/carlpy">Darknight8020</a>.
+  </div>
+  
+  <script type="module" src="./JS/App.js"></script>
+</body>
+
+</html>

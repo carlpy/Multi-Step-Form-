@@ -1,0 +1,33 @@
+/* 
+    - determine the step which you currently are ✅
+    - given the step activate the form associate with ✅
+    - make the buttons capable of changing from form to form  ✅
+    - when current gets to 5 both btn dissapear ✅
+    - change the inner text of next btn when currentStep == 4 ✅
+
+    form 1 
+        - get the inputs from the html ✅
+        - get a function to get the error message for each input ✅
+        - use a RegEx to check the email ✅
+        - set a condition which it increase the currentStep if all inputs are Ok; relate to isValid var ✅
+        - enable the back btn and it's function ✅
+
+    form 2 
+        - Get all the btn plans and use an add even listener ✅
+        - set the values under the monthly cost plan when Yearly facturing is on ✅
+        - when input checked fill the empty p with the cost month * 10 and \n 2 months free ✅
+        - select the cost of the active plan ✅
+        - when click the switch update the value of the totalCost c
+        - parse the numbers and store them into a total variable which updates with the next forms ✅
+
+    form 3
+        - select the items from the container ✅
+        - depending on the switch status display m/y price ✅
+        - add an event listener where you add his value in m/y to the totalPlan cost ✅
+
+    form 4 
+        - create a function that takes use switchOptions addEvent ✅
+        - then compare the features between the current addon displayed and which should be displayed ✅
+        - find out what makes the cost multiply by 100 instead of 10 ✅
+        - and cordinate the btns, when switch pressed it affects the price-changer one ✅
+ */
